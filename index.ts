@@ -1,39 +1,10 @@
-type RequestMetrics = {
-  duration: number;
-  timestamp: Date;
-  status: number;
-};
-
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
-async function runRequest(url: string): Promise<RequestMetrics> {
-  const start = performance.now();
-  const response = await fetch(url);
-  const end = performance.now();
-
-  return {
-    duration: end - start,
-    timestamp: new Date(),
-    status: response.status,
-  };
-}
-
-function calculateMedian(numbers: number[]): number {
-  const sorted = [...numbers].sort((a, b) => a - b);
-  const middle = Math.floor(sorted.length / 2);
-
-  return sorted.length % 2 === 0
-    ? (sorted[middle - 1] + sorted[middle]) / 2
-    : sorted[middle];
-}
-
-function calculatePercentile(
-  sortedNumbers: number[],
-  percentile: number
-): number {
-  const index = Math.floor(sortedNumbers.length * percentile);
-  return sortedNumbers[index];
-}
+import { RequestMetrics } from "./types";
+import {
+  calculateMedian,
+  calculatePercentile,
+  delay,
+  runRequest,
+} from "./utils";
 
 async function runBenchmark(
   url: string,
@@ -53,7 +24,7 @@ async function runBenchmark(
       const result = await runRequest(url);
       results.push(result);
 
-      // Small delay to prevent overwhelming the server
+      // Delay to prevent overwhelming the server
       await delay(10);
     } catch (error) {
       errors.push(error as Error);
