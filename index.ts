@@ -82,14 +82,16 @@ async function runBenchmark(
   // Display results
   console.log("\nResults:");
   console.log("-".repeat(50));
-  console.log(`Total Requests: ${totalRequests}`);
-  console.log(`Failed Requests: ${failedRequests}`);
-  console.log(`Average Latency: ${average.toFixed(2)}ms`);
-  console.log(`Median Latency: ${median.toFixed(2)}ms`);
-  console.log(`Min Latency: ${minLatency.toFixed(2)}ms`);
-  console.log(`Max Latency: ${maxLatency.toFixed(2)}ms`);
-  console.log(`95th Percentile: ${p95.toFixed(2)}ms`);
-  console.log(`99th Percentile: ${p99.toFixed(2)}ms`);
+  console.table([
+    { Metric: "Total Requests", Value: results.length },
+    { Metric: "Failed Requests", Value: errors.length },
+    { Metric: "Average Latency (ms)", Value: Number(average.toFixed(2)) },
+    { Metric: "Median Latency (ms)", Value: Number(median.toFixed(2)) },
+    { Metric: "Min Latency (ms)", Value: Number(minLatency.toFixed(2)) },
+    { Metric: "Max Latency (ms)", Value: Number(maxLatency.toFixed(2)) },
+    { Metric: "95th Percentile (ms)", Value: Number(p95.toFixed(2)) },
+    { Metric: "99th Percentile (ms)", Value: Number(p99.toFixed(2)) },
+  ]);
 
   // Log errors if any
   if (failedRequests > 0) {

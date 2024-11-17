@@ -80,14 +80,18 @@ Benchmark complete!
 
 Results:
 --------------------------------------------------
-Total Requests: 290
-Failed Requests: 10
-Average Latency: 120.35ms
-Median Latency: 115.00ms
-Min Latency: 95.40ms
-Max Latency: 210.80ms
-95th Percentile: 200.45ms
-99th Percentile: 210.00ms
+┌───────────────────────────┬─────────────┐
+│ Metric                    │ Value       │
+├───────────────────────────┼─────────────┤
+│ Total Requests            │ 490         │
+│ Failed Requests           │ 10          │
+│ Average Latency (ms)      │ 120.35      │
+│ Median Latency (ms)       │ 115.00      │
+│ Min Latency (ms)          │ 95.40       │
+│ Max Latency (ms)          │ 210.80      │
+│ 95th Percentile (ms)      │ 200.45      │
+│ 99th Percentile (ms)      │ 210.00      │
+└───────────────────────────┴─────────────┘
 
 Errors encountered:
 Error 1: Network timeout
