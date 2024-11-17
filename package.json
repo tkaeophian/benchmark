@@ -1,0 +1,11 @@
+{
+  "name": "benchmark",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "benchmark": "npx tsx benchmark.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0"
+  }
+}
